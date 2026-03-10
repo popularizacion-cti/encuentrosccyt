@@ -1,0 +1,194 @@
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #F4F6F8;
+}
+
+header {
+  background: #00A3E0;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background: white;
+}
+
+.indicadores {
+  display: flex;
+  gap: 15px;
+  padding: 10px;
+}
+
+.indicadores div {
+  background: white;
+  padding: 15px;
+  flex: 1;
+  border-left: 5px solid #00A3E0;
+  font-weight: 600;
+}
+
+.main-layout {
+  display: flex;
+  justify-content: center;   /* centra el bloque */
+  align-items: flex-start;
+  gap: 20px;
+
+  /* 🔒 Evita que el contenedor intente adaptar altura */
+  height: auto;
+}
+
+/* ================================
+   LISTA LATERAL FIJA CON SCROLL
+   - Altura igual al mapa (900px)
+   - Scroll interno automático
+   - Barra de scroll a la izquierda
+   - Tamaño fijo dentro del layout
+================================ */
+
+#listaEventos {
+  width: 35%;              /* 🔒 ANCHO FIJO DE LA LISTA */
+  height: 900px;             /* 🔒 MISMA ALTURA QUE EL MAPA */
+  background: white;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+
+  overflow-y: auto;          /* 🔒 Activa scroll vertical */
+  overflow-x: hidden;
+
+  flex: 0 0 320px;           /* 🔒 Evita que flex lo deforme */
+
+  direction: rtl;            /* 🔒 Mueve scrollbar a la izquierda */
+}
+
+/* Mantiene el texto en dirección normal */
+#listaEventos * {
+  direction: ltr;
+}
+
+/* ================================
+   ESTILO DE CADA EVENTO
+================================ */
+
+.evento-item {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+
+.evento-item:hover {
+  background: #F4F6F8;
+  cursor: pointer;
+}
+
+/* ================================
+   SCROLL PERSONALIZADO (Chrome / Edge)
+================================ */
+
+#listaEventos::-webkit-scrollbar {
+  width: 8px;
+}
+
+#listaEventos::-webkit-scrollbar-thumb {
+  background: #00A3E0;
+  border-radius: 4px;
+}
+
+#listaEventos::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* ================================
+   MAPA TAMAÑO FIJO REAL
+================================ */
+
+#map {
+  width: 600px !important;     /* 🔒 ANCHO FIJO */
+  height: 900px !important;    /* 🔒 ALTO FIJO */
+  flex: 0 0 600px;             /* 🔒 Bloquea comportamiento flex */
+  border: 1px solid #ddd;
+}
+
+/* ================================
+   CONTENEDOR DE GRÁFICOS RESPONSIVO
+================================ */
+
+.graficos {
+  padding: 20px;
+  background: white;
+  display: flex;
+  flex-wrap: wrap;          /* Permite salto de línea automático */
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Cada gráfico */
+.graficos canvas {
+  width: 400px !important;
+  height: 300px !important;
+  background: #f1f1f1;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN – CELULARES Y TABLETS
+========================================== */
+
+@media (max-width: 1024px) {
+
+  .filters {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    padding: 5px;
+    background: white;
+  }
+  
+  .indicadores {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    padding: 10px;
+  }
+  
+  /* Layout pasa de horizontal a vertical */
+  .main-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Lista ocupa todo el ancho */
+  #listaEventos {
+    width: 80%;
+    height: 300px;   /* más pequeña en móvil */
+    flex: none;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  /* Mapa se adapta al ancho */
+  #map {
+    width: 80% !important;
+    height: 300px !important;
+    min-width: unset;
+    max-width: unset;
+    flex: 0 0 320;
+  }
+  
+  /* Gráficos uno debajo del otro */
+  .graficos-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .grafico-box {
+    width: 80% !important;
+    height: 300px !important;
+  }
+}

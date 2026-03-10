@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<title>Observatorio Nacional de Encuentros</title>
+
+<!-- Fuentes y librerías -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<link rel="stylesheet" href="style.css"/>
+</head>
+
+<body>
+
+<header>
+<h1>Encuentros de Clubes de Ciencia y Tecnología</h1>
+<p>Los Encuentros de Clubes de Ciencia y Tecnología son eventos dirigidas a niñas, niños y adolescentes integrantes
+  de los clubes de ciencia y tecnología, con el objetivo de promover un espacio de confraternidad, el fomento de las 
+  habilidades blandas y el razonamiento científico de los estudiantes.</p>
+</header>
+
+<!-- Filtros -->
+<section class="filters">
+  <p>Año: </p>
+<select id="filtroAnio"></select>
+  <p>Región: </p>
+<select id="filtroRegion"></select>
+  <p>Organizador: </p>
+<select id="filtroInstitucion"></select>
+  <p>Tipo de encuentro: </p>
+<select id="filtroAlcance"></select>
+</section>
+
+<!-- Indicadores -->
+<section class="indicadores">
+<div id="kpiCobertura"></div>
+<div id="kpiTotal"></div>
+<div id="kpiAsistentes"></div>
+</section>
+
+<!-- Layout principal -->
+<div class="main-layout">
+  <div id="listaEventos"></div>
+  <div id="map"></div>
+</div>
+
+<!-- Gráficos -->
+<section class="graficos">
+  <canvas id="graficoEncuentros"></canvas>
+  <canvas id="graficoAsistentes"></canvas>
+  <canvas id="graficoRegiones"></canvas>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
